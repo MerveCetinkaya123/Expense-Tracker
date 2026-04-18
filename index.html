@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Expense Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 min-h-screen">
+
+  <div class="max-w-5xl mx-auto px-4 py-10">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-slate-800">Mini Expense Tracker</h1>
+      <p class="text-slate-500 mt-2">Gelir ve giderlerini kolayca takip et</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-sm font-medium text-slate-500">Toplam Bakiye</h2>
+        <p id="balance" class="text-3xl font-bold text-slate-800 mt-2">₺0.00</p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6 border-l-4 border-green-500">
+        <h2 class="text-sm font-medium text-slate-500">Toplam Gelir</h2>
+        <p id="income" class="text-2xl font-bold text-green-600 mt-2">₺0.00</p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6 border-l-4 border-red-500">
+        <h2 class="text-sm font-medium text-slate-500">Toplam Gider</h2>
+        <p id="expense" class="text-2xl font-bold text-red-600 mt-2">₺0.00</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <div class="lg:col-span-1 bg-white rounded-2xl shadow p-6">
+        <h2 class="text-xl font-semibold text-slate-800 mb-4">Yeni İşlem Ekle</h2>
+
+        <form id="transactionForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">İşlem Türü</label>
+            <select id="type" class="w-full border border-slate-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-400">
+              <option value="income">Gelir</option>
+              <option value="expense">Gider</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Açıklama</label>
+            <input
+              type="text"
+              id="description"
+              placeholder="Örn: Market alışverişi"
+              class="w-full border border-slate-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-400"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Kategori</label>
+            <input
+              type="text"
+              id="category"
+              placeholder="Örn: Market, Maaş, Ulaşım"
+              class="w-full border border-slate-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-400"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Tutar</label>
+            <input
+              type="number"
+              id="amount"
+              placeholder="Örn: 500"
+              class="w-full border border-slate-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-400"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-slate-800 text-white py-3 rounded-xl font-medium hover:bg-slate-700 transition"
+          >
+            İşlem Ekle
+          </button>
+        </form>
+      </div>
+
+      <div class="lg:col-span-2 bg-white rounded-2xl shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-semibold text-slate-800">İşlem Geçmişi</h2>
+          <button
+            id="clearAllBtn"
+            class="bg-red-500 text-white px-4 py-2 rounded-xl text-sm hover:bg-red-600 transition"
+          >
+            Tümünü Sil
+          </button>
+        </div>
+
+        <div id="transactionList" class="space-y-3">
+          <p class="text-slate-500 text-sm">Henüz işlem eklenmedi.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
